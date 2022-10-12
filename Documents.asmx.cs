@@ -79,7 +79,7 @@ namespace WebApplication2
                 }
                 else
                 {
-                    string json = "{\"status\":\"0\"," +
+                    string json = "{\"status\":\"0 \"," +
                    "\"message\":\"failed\"}";
                     SendJSON(json);
 
