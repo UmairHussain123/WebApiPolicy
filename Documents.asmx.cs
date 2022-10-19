@@ -49,25 +49,25 @@ namespace WebApplication2
         }
         [WebMethod]
 
-        public  void AddDocReadDetails(int PNO,string DocumentName, string tokenID,string EmpType)
+        public  void AddDocReadDetails(int PNO,string DocumentName, string tokenID,string EmpTypes)
         {
             DateTime currentDate = DateTime.Now;
             token(PNO.ToString(), tokenID);
             if (token(PNO.ToString(), tokenID)) 
                 
             {
-                if (!String.IsNullOrEmpty(EmpType) && !EmpType.Any(char.IsDigit))
+                if (!String.IsNullOrEmpty(EmpTypes) && !EmpTypes.Any(char.IsDigit))
                 {
                     
             try
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into AddDocReadDetails (PNO,DocumentName,DATETIME,EmpType) values (@PNO,@DocumentName,@DATETIME,@EmpType)", con);
+                SqlCommand cmd = new SqlCommand("insert into AddDocReadDetails (PNO,DocumentName,DATETIME,EmpTypes) values (@PNO,@DocumentName,@DATETIME,@EmpTypes)", con);
 
                 cmd.Parameters.AddWithValue("@PNO", PNO);
                     cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
                     cmd.Parameters.AddWithValue("@DATETIME", currentDate);
-                    cmd.Parameters.AddWithValue("@EmpType", EmpType);
+                    cmd.Parameters.AddWithValue("@EmpTypes", EmpTypes);
                     int result = cmd.ExecuteNonQuery();
               
                 if (result > 0)
